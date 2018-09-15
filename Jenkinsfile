@@ -1,20 +1,12 @@
 pipeline {
   agent any
-  stages {
-    stage('Build') {
-      steps {
-        build 'HelloWorld_Build'
+      stages {
+          stage ('Compile Stage'){
+		            steps {
+			            withMaven(maven : 'apache-maven-3.5.2') {
+				          sh 'mvn clean compile'
+			            }
+		            }
+	        }
       }
-    }
-    stage('Sonar') {
-      steps {
-        build 'HelloWorld_Sonar'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        build 'HelloWorld_Deploy'
-      }
-    }
-  }
 }
