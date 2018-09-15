@@ -3,7 +3,17 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        build 'Maven'
+        build 'HelloWorld_Build'
+      }
+    }
+    stage('Sonar') {
+      steps {
+        build 'HelloWorld_Sonar'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        build 'HelloWorld_Deploy'
       }
     }
   }
