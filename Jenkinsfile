@@ -1,20 +1,13 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        build 'HelloWorld_Build'
-      }
+    agent any
+    tools {
+        maven 'apache-maven-3.3.9'
     }
-    stage('Sonar') {
-      steps {
-        build 'HelloWorld_Sonar'
-      }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
     }
-    stage('Deploy') {
-      steps {
-        build 'HelloWorld_Deploy'
-      }
-    }
-  }
 }
